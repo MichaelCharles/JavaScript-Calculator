@@ -1,0 +1,160 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+/* The following shadow mixin is from https://css-tricks.com/snippets/sass/material-shadows-mixin/
+It has been modified to allow for an extra layer of shadow depth. */
+body {
+  background: #e2e2e2;
+  color: #212121;
+  font-family: Roboto, sans-serif;
+}
+
+.japanese {
+  font-family: "Noto Sans Japanese";
+}
+
+a:link,
+a:active,
+a:visited {
+  color: #9C27B0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7B1FA2;
+  text-decoration: underline;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.content {
+  max-width: 400px;
+}
+
+.card, .fcc {
+  background: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+  padding: 2em;
+  border-radius: 40px;
+  margin-top: 1em;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display {
+  display: flex;
+  background: #212121;
+  color: white;
+  border: #4CAF50 10px solid;
+  border-top: #388E3C 10px solid;
+  border-bottom: #6CCF70 10px solid;
+  border-right: #6CCF70 10px solid;
+  margin: 5px;
+  margin-bottom: 15px;
+  padding: .25em;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 2em;
+  justify-content: space-between;
+  max-width: 266px;
+  overflow: hidden;
+}
+
+.button-area {
+  background: #4CAF50;
+  color: white;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.buttons div {
+  font-weight: bold;
+  background: white;
+  color: #4CAF50;
+  text-align: center;
+  padding: 0;
+  margin: 5px;
+  padding: 15px 0;
+  width: 60px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.buttons div:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.btn-op {
+  background: #4CAF50 !important;
+  color: white !important;
+}
+
+.btn-clear {
+  background: #388E3C !important;
+  color: white !important;
+}
+
+.fcc {
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 275px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  visibility: hidden;
+}
+.fcc button {
+  background: #9C27B0;
+  border: 0;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  padding: .75em;
+  margin-left: 190px;
+  margin-top: 10px;
+}
+
+@media (max-width: 400px) {
+  body {
+    background: white;
+    overflow-x: hidden;
+  }
+
+  .card, .fcc {
+    box-shadow: none;
+    margin: 0;
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+
+  .fcc {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  .fcc .fcc-wrap {
+    width: 75%;
+    padding-top: 100px;
+    margin: 10px;
+  }
+  .fcc .fcc-wrap button {
+    margin-left: 0;
+  }
+  .fcc .fcc-wrap .dismiss-wrap {
+    width: 100px;
+    margin: 0;
+    margin-left: auto;
+  }
+}
+span.tiny-space {
+  font-size: 1px;
+}

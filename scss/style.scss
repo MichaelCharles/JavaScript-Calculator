@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+/* The following shadow mixin is from https://css-tricks.com/snippets/sass/material-shadows-mixin/
+It has been modified to allow for an extra layer of shadow depth. */
+@mixin shadow($depth) {
+    @if $depth < 1 {
+        box-shadow: none;
+    }
+    @else if $depth > 6 {
+        @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+    }
+    @else {
+        box-shadow: bottom-shadow($depth), top-shadow($depth);
+    }
+}
+@function top-shadow($depth) {
+    $primary-offset: nth(1 1.5 3 10 14 19, $depth) * 1px;
+    $blur: nth(1 1.5 3 10 14 19, $depth) * 4px;
+    $color: rgba(black, nth(.10 .12 .16 .19 .25 .30, $depth));
+    @return 0 $primary-offset $blur $color;
+}
+@function bottom-shadow($depth) {
+    $primary-offset: nth(1 1.5 3 6 10 15, $depth) * 1px;
+    $blur: nth(1 1 3 3 5 6, $depth) * 4px;
+    $color: rgba(black, nth(.25 .24 .23 .23 .22 .22, $depth));
+    @return 0 $primary-offset $blur $color;
+}
+
+// These are color variables!
+$dark-primary: #388E3C;
+$primary: #4CAF50;
+$light-primary: #6CCF70;
+$accent: #9C27B0;
+$dark-accent: #7B1FA2;
+$primary-text: #212121;
+$secondary-text: #717171;
+$divider: #d6d6d6;
+$background: #e2e2e2;
+$card-background: white;
+$alert: #F44336;
+$okay: #4CAF50;
+
+// My font stack starts with Noto Sans Japanese because sometimes I might want to use Japanese text.
+$font-stack: Roboto, sans-serif;
+
+body {
+  background: $background;
+  color: $primary-text;
+  font-family: $font-stack;
+}
+
+.japanese {
+  font-family: "Noto Sans Japanese";
+}
+
+a:link,
+a:active,
+a:visited {
+  color: $accent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $dark-accent;
+  text-decoration: underline;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.content {
+  max-width: 400px;
+}
+
+.card {
+  background: $card-background;
+  @include shadow(4);
+  padding: 2em;
+  border-radius: 40px;
+  margin-top: 1em; 
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display {
+  display: flex;
+  background: $primary-text;
+  color: white;
+  border: $primary 10px solid;
+  border-top: $dark-primary 10px solid;
+  border-bottom: $light-primary 10px solid;
+  border-right: $light-primary 10px solid;
+  margin: 5px;
+  margin-bottom: 15px;
+  padding: .25em;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 2em;
+  justify-content: space-between;
+  max-width: 266px;
+  overflow: hidden;
+}
+
+.button-area{
+  background: $primary;
+  color: $card-background;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.buttons {
+  div {
+  font-weight: bold;
+  background: $card-background;
+  color: $primary;
+  text-align: center;
+  padding: 0;
+  margin: 5px;
+  padding: 15px 0;
+  width: 60px;
+  border-radius: 8px;
+  @include shadow(1);
+  }
+  div:hover {
+    @include shadow(3);
+    cursor: pointer;
+  }
+}
+
+.btn-op {
+  background: $primary !important;
+  color: $card-background !important;
+}
+
+.btn-clear {
+  background: $dark-primary !important;
+  color: $card-background !important;
+}
+
+.fcc {
+  @extend .card;
+  @include shadow(6);
+  border-radius: 5px;
+  width: 275px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  visibility: hidden;
+  button {
+    background: $accent;
+    border: 0;
+    outline: none;
+    color: white;
+    text-transform: uppercase;
+    padding: .75em;
+    margin-left: 190px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    background: white;
+    overflow-x: hidden;
+  }
+  .card {
+    box-shadow: none;
+    margin: 0;
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+  .fcc {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    .fcc-wrap{
+      width: 75%;
+      padding-top: 100px;
+      margin: 10px;
+      button {
+        margin-left: 0;
+      }
+      .dismiss-wrap {
+        width: 100px;
+        margin: 0;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+span.tiny-space {
+  font-size: 1px;
+}
