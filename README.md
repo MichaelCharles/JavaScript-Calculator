@@ -1,5 +1,7 @@
 # JavaScript Calculator
 
+[See this project live on GitHub pages.](https://mca62511.github.io/JavaScript-Calculator)
+
 This was created as a project for FreeCodeCamp. 
 
 --------
