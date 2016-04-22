@@ -1,3 +1,4 @@
+/* global $ */
 
 var calculator = {
   prevVal: 0,
@@ -30,33 +31,44 @@ var calculator = {
     });
   },
   add: function() {
+    this.checkPrevious();
     this.op.text("+");
     this.clearMe = true;
     this.prevVal = Number(this.display.text());
   },
   subtract: function() {
+    
     if (this.display.text() === "") {
       this.press("98");
     } else {
+      this.checkPrevious();
       this.op.text("-");
       this.clearMe = true;
       this.prevVal = Number(this.display.text());
     }
   },
   multiply: function() {
+    this.checkPrevious();
     this.op.text("X");
     this.clearMe = true;
     this.prevVal = Number(this.display.text());
   },
   divide: function() {
+    this.checkPrevious();
     this.op.text("/");
     this.clearMe = true;
     this.prevVal = Number(this.display.text());
   },
   remainder: function() {
+    this.checkPrevious();
     this.op.text("%");
     this.clearMe = true;
     this.prevVal = Number(this.display.text());
+  },
+  checkPrevious: function() {
+    if (this.op.text() !== "") {
+      this.press("equals");
+    }
   },
   equals: function(y, op) {
     var x = this.prevVal;
